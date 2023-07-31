@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/homestyle.css')}}" type="text/css"> -->
+     <link rel="stylesheet" href="static/css/homestyle.css">
+     <style>
+         body {background-image: url("{{bg[choice]}}");}
+     </style>
+    <meta charset="UTF-8">
+    <title>home</title>
+
+</head>
+<body>
+
+        <!-- Heading -->
+        <h4>
+        welcome to the barcelona fans website
+        </h4>
+
+        <!-- Subheading -->
+        <p >
+        please tell us what do you want to do
+        </p>
+
+        <header>  
+        <nav>  
+        <a href="/bg"><button>change bg color</button></a>  
+        </li>  
+        <li>  
+        <a href="/home"><button>home page</button></a>  
+        </li>  
+        <li>  
+        <a href="/messi"><button>Goat's page</button></a>  
+        </li>  
+        <li>  
+        <a href="/about"><button>about barcelona</button></a>
+        </li>  
+        <li>  
+        <a href="/survey"><button>important survey</button></a> 
+        </li>  
+        <a href="/signout"><button>signout</button></a>
+        </li>   
+        </ul>  
+        </nav>  
+        </header>
+            
+            
+            {%for i in bg%}
+                <h4>
+                    {{i}}
+                </h4>
+            {%endfor%}
+
+             <form method="post" action="/home">
+                <div>         
+                <input type="radio" name="choice" value="0">1
+                <input type="radio" name="choice" value="1">2
+                <input type="radio" name="choice" value="2">3
+                <input type="radio" name="choice" value="3">4
+
+                </div>
+
+        <div>
+            <input type="submit"/>
+        </div>
+             </form>
+        
+
+</body>
+</html>
