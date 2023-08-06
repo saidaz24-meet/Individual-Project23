@@ -3,43 +3,127 @@
 <head>
     <link rel="stylesheet" href="static/css/homestyle.css">
     <meta charset="UTF-8">
-    <title>home</title>
+    <title>the goat</title>
 </head>
 <body>
-    
-        <!-- Heading -->
-        <h1>
-        welcome to messi's page
-        </h1>
-
-
-
-        <header>  
-        <nav>  
-        <ul> 
-        <li>  
-        <a href="/home"><button>home page</button></a>  
-        </li>  
-        <li>  
-        <a href="/messi"><button>Goat's page</button></a>  
-        </li>  
-        <li>  
-        <a href="/about"><button>about barcelona</button></a>
-        </li>  
-        <li>  
-        <a href="/survey"><button>important survey</button></a> 
-        </li>  
-        <a href="/signout"><button>signout</button></a>
-        </li>   
+<header>  
+    <nav>  
+        <ul>  
+            <li>  
+                <a href="/home"><button>home page</button></a>  
+            </li> 
+            <li>  
+                <a href="/messi"><button>Goat's page</button></a>  
+            </li>  
+            <li>  
+                <a href="/about"><button>about barcelona</button></a>
+            </li>  
+            <li>  
+                <a href="/survey"><button>important survey</button></a> 
+            </li>  
+            <li>  
+                <a href="/signout"><button>signout</button></a>
+            </li>   
         </ul>  
-        </nav>  
-        </header>  
+    </nav>  
+</header>  
 
-            
-            
-            
-            
-        
+<!-- Heading -->
+<h1>
+    Welcome to the legend's Page
+</h1>
 
+<h2>
+   Leo Messi, is an Argentine professional footballer who plays as a forward for and captains both Major League Soccer club Inter Miami and the Argentina national team. Widely regarded as one of the greatest players of all time
+</h2>
+
+<!-- Add side photos from Wikipedia page of events -->
+<h3>
+ 
+Lionel Messi's 43 Trophies
+
+    10x La Liga (Barcelona)
+    4x UEFA Champions League (Barcelona)
+    7x Copa del Rey (Barcelona)
+    8x Supercopa de Espana (Barcelona)
+    3x FIFA Club World Cup (Barcelona)
+    3x UEFA Super Cup (Barcelona)
+    1x FIFA World Cup (Argentina)
+    1x Copa America (Argentina)
+    ...
+</h3>
+
+<h3>
+messi's first goal with barcelona and the moment where everyone was sure that there is somthing special in this kid :
+</h3>
+
+        <div class="video-container">
+        <form method="get" action="https://www.youtube.com/shorts/9_Gh_9apEkg?feature=share">
+            <div class="image-container">
+                <img src="static/imgs/pinkM.jpeg" alt="Messi video" width="300" height="400">
+                <div class="play-button"></div>
+            </div>
+            <input type="image" src="" alt="Play" width="300" height="400" class="play-icon">
+        </form>
+    </div>
+<h3>
+   i think the best way to understand messi in 20 min is to watch this :
+</h3>
+    <!-- Link the image to the YouTube URL using a picture button -->
+    <div class="video-container">
+        <form method="get" action="https://youtu.be/G4wTERfoPfA">
+            <div class="image-container">
+                <img src="static/imgs/goat.jpg" alt="Messi video" width="300" height="400">
+                <div class="play-button"></div>
+            </div>
+            <input type="image" src="" alt="Play" width="300" height="400" class="play-icon">
+        </form>
+    </div>
+    <div class="rain"></div>
+    <div class="lightning"></div>
+<h3>
+    I think you get the main point, messi is just the best player of all time if you actually put personalty on the side!!!
+</h3>
+
+<!-- Add photos at the bottom -->
+<div class="photo-container">
+    <img src="static/imgs/messi2.jpeg" alt="Photo 1">
+    <img src="static/imgs/messi3.jpg" alt="Photo 2">
+    <img src="static/imgs/messi4.jpg" alt="Photo 3">
+ 
+
+</div>
+<script type="text/javascript">
+// script.js
+
+function createRaindrops() {
+    const container = document.querySelector(".video-container");
+    const raindropCount = 50;
+
+    for (let i = 0; i < raindropCount; i++) {
+        const raindrop = document.createElement("div");
+        raindrop.classList.add("raindrop");
+        raindrop.style.left = `${Math.random() * 100}%`;
+        raindrop.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(raindrop);
+    }
+}
+
+function createLightning() {
+    const container = document.querySelector(".video-container");
+    const lightningCount = 2;
+
+    for (let i = 0; i < lightningCount; i++) {
+        const lightning = document.createElement("div");
+        lightning.classList.add("lightning");
+        lightning.style.left = `${Math.random() * 100}%`;
+        lightning.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(lightning);
+    }
+}
+
+createRaindrops();
+createLightning();
+</script>
 </body>
 </html>

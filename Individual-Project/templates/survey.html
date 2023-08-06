@@ -2,98 +2,149 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="static/css/homestyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        nav ul li a button {
+            background-color: #555;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        nav ul li a button:hover {
+            background-color: #777;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h4 {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #555;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #777;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>survey</title>
 </head>
 <body>
-
-
-        <header>  
+    <header>  
         <nav>  
-        <ul> 
-        <li>  
-        <a href="/home"><button>home page</button></a>  
-        </li>  
-        <li>  
-        <a href="/messi"><button>Goat's page</button></a>  
-        </li>  
-        <li>  
-        <a href="/about"><button>about barcelona</button></a>
-        </li>  
-        <li>  
-        <a href="/survey"><button>important survey</button></a> 
-        </li>  
-        <a href="/signout"><button>signout</button></a>
-        </li>   
-        </ul>  
+            <ul> 
+                <li>  
+                    <a href="/home"><button>home page</button></a>  
+                </li>  
+                <li>  
+                    <a href="/messi"><button>Goat's page</button></a>  
+                </li>  
+                <li>  
+                    <a href="/about"><button>about barcelona</button></a>
+                </li>  
+                <li>  
+                    <a href="/survey"><button>important survey</button></a> 
+                </li>  
+                <a href="/signout"><button>signout</button></a>
+                </li>   
+            </ul>  
         </nav>  
-        </header> 
-
-
-
+    </header> 
 
     <form method="post" action="/survey">
-        <!-- Heading -->
-        <h1>
-        fill the survey{{error}}
-        </h1>
-
-        <!-- Subheading -->
-        <p >
-        tell us more about you ma boy.{{error}}
-        </p>
-
-        <!-- questions -->
-        <h4>
-        who is barcelona's best player ?
-        </h4>
-            <div>
-                <input type="text"  name="Q1" id="Q1" required>
-            </div>
-
-        <h4>
-        what year was the most successfull year foe barcelona ?
-        </h4>
-            <div>
-                <input type="text"  name="Q2" id="Q2" required>
-            </div>
-
-       
-        does real madrid suck ?
-        
-            <div>
-                <input type="radio" name="Q3" value="Opt1">yea
-                <input type="radio" name="Q3" value="Opt2">heelllll ya
-    <br>
-            </div>
-
-
-        <h4>
-        do you play footbal or just watch ?
-        </h4>
-            <div>
-                <input type="text"  name="Q4" id="Q4" required>
-            </div>
-
-
-        <h4>
-        rate the website so far(1-10)
-        </h4>
-            <div>
-                <input type="number"  name="Q5" id="Q5" min = "1" max = "10" required>
-            </div>
-        
-        
-        <!-- Button -->
+        <h1>Fill the Survey</h1>
+        <p>Tell us more about yourself.</p>
+        <h4>Who is Barcelona's best player?</h4>
         <div>
-            <input type="submit"/>
+            <input type="text"  name="Q1" id="Q1" required>
         </div>
 
+        <h4>What year was the most successful year for Barcelona?</h4>
+        <div>
+            <input type="text"  name="Q2" id="Q2" required>
+        </div>
+
+        <h4>Does Real Madrid suck?</h4>
+        <div>
+            <input type="radio" name="Q3" value="Opt1">Yes
+            <input type="radio" name="Q3" value="Opt2">Hell yeah
+        </div>
+
+        <h4>Do you play football or just watch?</h4>
+        <div>
+            <input type="text"  name="Q4" id="Q4" required>
+        </div>
+
+        <h4>Rate the website so far (1-10)</h4>
+        <div>
+            <input type="number"  name="Q5" id="Q5" min="1" max="10" required>
+        </div>
         
-
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
     </form>
-    
-
-
 </body>
 </html>

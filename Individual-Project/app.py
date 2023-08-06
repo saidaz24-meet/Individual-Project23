@@ -27,24 +27,33 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 @app.route('/', methods=['GET', 'POST'])
 def signup():
     error = ""
+ 
+    # trying = {"userid":UID,"userName":"Fatma Azaizah","date":"01-08-2023","story":"my journy in lessan was very exciting, i learned aot of usefull things that helped me alot finding a higher paied job, and in general just meeting new people and developing relationship with israelis"}
+    # db.child("Posts").child(UID).set(trying)
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        try:
-            print("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-            login_session['user'] = auth.create_user_with_email_and_password(email, password)
-            UID = login_session['user']['localId']
-            user = {"email":request.form['email'],
+        user = {"email":request.form['email'],
             "password":request.form['password'],
             "full_name":request.form['full_name'],
             "username":request.form['username'],
-            "bio":request.form['bio'],
-            }
+            "current_image":0
+           }
+
+        print("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+  
+        try:
+            login_session['user'] = auth.create_user_with_email_and_password(email, password)    
+            UID = login_session['user']['localId']
+            # cities = db.child("Cities").get().val().keys()
+            # username = db.child("Users").child(UID).child("username").get().val()
+            # pic = random.choice(list(db.child("Cities").get().val().keys()))
+     
             db.child("Users").child(UID).set(user)
-            print("LOOOOO")
             return redirect(url_for('home'))
         except:
             error = "Authentication failed"
+            print("error")
     return render_template("signup.html",error = "authentication failed")
 
 
@@ -72,9 +81,17 @@ def home():
     if request.method == 'POST':
         choice = request.form['choice']
         UID = login_session['user']['localId']
-        db.child("Users").child(UID).child("current_image").set(int(choice)+1)
-        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg"],choice = int(choice))
-    return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg"],choice = 0)
+        db.child("Users").child(UID).child("current_image").update(int(choice)+1)
+        current = db.child("Users").child(UID).child("current_image")
+        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"],choice = int(choice),current = current)
+
+    try :
+        UID = login_session['user']['localId']
+        current = db.child("Users").child(UID).child("current_image")
+        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"],choice = int(choice),current = current)
+
+    except :
+        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg"],choice = 0,current = 0)
 
  # @app.route('/bg')
  # def bg():  

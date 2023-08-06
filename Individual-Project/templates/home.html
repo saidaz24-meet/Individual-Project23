@@ -4,53 +4,79 @@
 
     <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/homestyle.css')}}" type="text/css"> -->
      <link rel="stylesheet" href="static/css/homestyle.css">
-     <style>
-         body {background-image: url("{{bg[choice]}}");}
-     </style>
+    <style>
+        /* Style the container to fit half of the screen width */
+        .image-container {
+            width: 100%;
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Style the image to fit the container */
+        .image-container img {
+            width: 100%; /* Make the image take up the full width of the container */
+            height: 100%; /* Maintain aspect ratio */
+            border: 2px solid #202020;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        /* Frame for photos */
+/*.photo-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.photo-container img {
+  border: 2px solid #202020;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 200px;
+}*/
+    </style>
     <meta charset="UTF-8">
     <title>home</title>
 
 </head>
 <body>
 
+    <header>  
+    <nav>  
+        <ul>  
+            <li>  
+                <a href="/home"><button>home page</button></a>  
+            </li> 
+            <li>  
+                <a href="/messi"><button>Goat's page</button></a>  
+            </li>  
+            <li>  
+                <a href="/about"><button>about barcelona</button></a>
+            </li>  
+            <li>  
+                <a href="/survey"><button>important survey</button></a> 
+            </li>  
+            <li>  
+                <a href="/signout"><button>signout</button></a>
+            </li>   
+        </ul>  
+    </nav>  
+</header>  
+
         <!-- Heading -->
-        <h4>
+        <h1>
         welcome to the barcelona fans website
-        </h4>
+        </h1>
 
         <!-- Subheading -->
-        <p >
-        please tell us what do you want to do
-        </p>
+        <h2>
+        use the bar to go to different pages
+        </h2>
+        <h2>
+        change pic and save
+        </h2>
 
-        <header>  
-        <nav>  
-        <a href="/bg"><button>change bg color</button></a>  
-        </li>  
-        <li>  
-        <a href="/home"><button>home page</button></a>  
-        </li>  
-        <li>  
-        <a href="/messi"><button>Goat's page</button></a>  
-        </li>  
-        <li>  
-        <a href="/about"><button>about barcelona</button></a>
-        </li>  
-        <li>  
-        <a href="/survey"><button>important survey</button></a> 
-        </li>  
-        <a href="/signout"><button>signout</button></a>
-        </li>   
-        </ul>  
-        </nav>  
-        </header>
-            
-            
-            {%for i in bg%}
-                <h4>
-                    {{i}}
-                </h4>
-            {%endfor%}
+
+
 
              <form method="post" action="/home">
                 <div>         
@@ -58,6 +84,9 @@
                 <input type="radio" name="choice" value="1">2
                 <input type="radio" name="choice" value="2">3
                 <input type="radio" name="choice" value="3">4
+                <input type="radio" name="choice" value="4">5
+                <input type="radio" name="choice" value="5">6
+                <input type="radio" name="choice" value="6">7
 
                 </div>
 
@@ -65,7 +94,23 @@
             <input type="submit"/>
         </div>
              </form>
-        
 
+        <br>
+                <br>
+                        <br>
+                                <br>
+                                        <br>
+                                                <br>
+                                                        <br>
+                                                                <br>
+                                                                        <br>
+                                                                                <br>
+                                                                                        <br>
+                                                                                                <br>
+
+
+      <div class="image-container">   
+   <img src="{{bg[current]}}" alt="Background Image">
+</div>
 </body>
 </html>
