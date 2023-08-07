@@ -37,7 +37,7 @@ def signup():
             "password":request.form['password'],
             "full_name":request.form['full_name'],
             "username":request.form['username'],
-            "current_image":0
+            "current_image":"static/imgs/barcelona.jpg"
            }
 
         print("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
@@ -79,19 +79,25 @@ def signin():
 @app.route('/home',methods=['GET','POST'])
 def home(): 
     if request.method == 'POST':
+        print("post")
         choice = request.form['choice']
         UID = login_session['user']['localId']
-        db.child("Users").child(UID).child("current_image").update(int(choice)+1)
-        current = db.child("Users").child(UID).child("current_image")
-        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"],choice = int(choice),current = current)
+        bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"]
+        db.child("Users").child(UID).child("current_image").set(bg[int(choice)])
+        current = db.child("Users").child(UID).child("current_image").get().val()
+        return render_template("home.html",bg = bg,choice = int(choice),current = current)
 
     try :
+        print("try")
         UID = login_session['user']['localId']
-        current = db.child("Users").child(UID).child("current_image")
-        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"],choice = int(choice),current = current)
+        print("pass1")
+        current = db.child("Users").child(UID).child("current_image").get().val()
+        print("pass2")
+        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg","static/imgs/b.jpeg","static/imgs/barcelona2.jpg","static/imgs/barcelona3.jpg"],current = current)
 
     except :
-        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg"],choice = 0,current = 0)
+        print("except")
+        return render_template("home.html",bg = ["static/imgs/2009.jpg","static/imgs/messi1.jpg","static/imgs/team.jpeg","static/imgs/barcelona.jpg"],current = "static/imgs/barcelona.jpg")
 
  # @app.route('/bg')
  # def bg():  
